@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -22,7 +23,7 @@ public class WMIVBScript implements WMIStub {
 		FileWriter writer = null;
 		BufferedReader errorOutput = null;
 		try {
-			tmpFile = File.createTempFile("wmi4java" + new Date().getTime(), ".vbs");
+			tmpFile = Files.createTempFile("wmi4java" + new Date().getTime(), ".vbs").toFile();
 			writer = new FileWriter(tmpFile);
 			writer.write(scriptCode);
 			writer.flush();

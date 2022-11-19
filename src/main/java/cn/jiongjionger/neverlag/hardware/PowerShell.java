@@ -2,6 +2,7 @@ package cn.jiongjionger.neverlag.hardware;
 
 import java.io.*;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.util.Date;
 import java.util.concurrent.*;
 import java.util.logging.Level;
@@ -92,7 +93,7 @@ public class PowerShell {
 		File tmpFile = null;
 		try {
 
-			tmpFile = File.createTempFile("psscript_" + new Date().getTime(), ".ps1");
+			tmpFile = Files.createTempFile("psscript_" + new Date().getTime(), ".ps1").toFile();
 			if (tmpFile == null || !tmpFile.exists()) {
 				return null;
 			}
